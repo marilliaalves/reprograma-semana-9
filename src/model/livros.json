@@ -1,8 +1,1 @@
-[ 
-    {
-        "id": "1",
-        "Livro": "Racismo, sexismo e desigualdade no Brasil",
-        "Autor(a)": "Sueli Carneiro",
-        "paginas": "192"
-    }
-] 
+[{"id":"1","livro":"Racismo, sexismo e desigualdade no Brasil","autor":"Sueli Carneiro","paginas":"192"},{"id":"2","livro":"Irmã outsider: Ensaios e conferências","autor":"Audre Lorde","paginas":"240"},{"id":"3","livro":"Eu sei por que o pássaro canta na gaiola","autor":"Maya Angelou","paginas":"336"},{"id":"4","livro":"Quem tem medo do feminismo negro?","autor":"Djamila Ribeiro","paginas":"120"},{"id":"5","livro":"Memórias da plantação: Episódios de racismo cotidiano","autor":"Grada Kilomba","paginas":"249"}]
