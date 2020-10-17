@@ -50,9 +50,73 @@ const getAll = (req, res) => {
     res.status(200).send(livros)
 };
 
-module.exports = {
-    getAll,
-    getById,
-    postLivros,
-    deleteLivros
+// PUT
+
+const putLivro = (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const livrosModificados = livros.find((livro) => livro.id == id);
+    console.log(livrosModificados);
+
+
+    const livrosAtualizados = req.body;
+    console.log(livrosAtualizados);
+
+ 
+    const index = livros.indexOf(livrosModificados);
+    console.log(index);
+ 
+    livros.splice(index, 1, livrosAtualizados);
+    console.log(livros);
+
+    fs.writeFile("./src/models/livros.json", JSON.stringify(livros), 'utf8', function (err) {
+      if (err) {
+        return res.status(424).send({ message: err });
+      }
+      console.log("Livro atualizado com sucesso!");
+    });
+
+    res.status(200).send(tarefas);
+  } catch (err) {
+    return res.status(424).send({ message: err });
+  }
 }
+
+//PATCH
+
+const patchLivro = (req, res) => {
+  const id = req.params.id;
+  const atualizacao = req.body;
+  console.log(atualizacao)
+
+  try {
+    const livrosModificados = livros.find((livro) => livro.id == id);
+
+    Object.keys(atualizacao).forEach((chave) => {
+      livrosModificados[chave] = atualizacao[chave]
+    })
+
+    fs.writeFile("./src/models/livros.json", JSON.stringify(livros), 'utf8', function(err) {
+      if (err) {
+        return res.status(424).send({ message: err});
+      }
+      console.log("Livro atualizado com sucesso!")
+    });
+
+    return res.status(200).send(livros);
+  } catch(err) {
+    return res.status(424).send({ message: err });
+  }
+}
+
+module.exports = {
+  getAll,
+  getById,
+  postLivros,
+  deleteLivros,
+  putLivro,
+  patchLivro
+};
+
+
